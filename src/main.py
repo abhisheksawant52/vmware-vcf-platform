@@ -1,1 +1,0 @@
-print("vmware-vcf-platform")
