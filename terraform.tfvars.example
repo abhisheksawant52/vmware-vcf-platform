@@ -1,0 +1,41 @@
+# Connection details (do NOT commit real credentials — use TF_VAR_* env vars)
+vsphere_server   = "vcenter.vcf.example.com"
+vsphere_user     = "administrator@vsphere.local"
+vsphere_password = "REPLACE_ME"
+
+nsx_manager_host = "nsx.vcf.example.com"
+nsx_username     = "admin"
+nsx_password     = "REPLACE_ME"
+
+allow_unverified_ssl = false
+environment          = "dev"
+
+datacenter = "VCF-Datacenter"
+
+workload_domain = {
+  cluster_name = "wld-01"
+  hosts        = ["esxi-01.vcf.example.com", "esxi-02.vcf.example.com", "esxi-03.vcf.example.com", "esxi-04.vcf.example.com"]
+  drs_enabled  = true
+  ha_enabled   = true
+  vsan_enabled = true
+}
+
+datastores = {
+  nfs-templates = {
+    remote_host = "10.0.30.10"
+    remote_path = "/exports/templates"
+  }
+}
+
+edge_cluster_path   = "/infra/sites/default/enforcement-points/default/edge-clusters/edge-cluster-01"
+transport_zone_path = "/infra/sites/default/enforcement-points/default/transport-zones/overlay-tz"
+tier0_gateway_name  = "t0-vcf"
+
+segments = {
+  seg-app = {
+    gateway_cidr = "192.168.10.1/24"
+  }
+  seg-db = {
+    gateway_cidr = "192.168.20.1/24"
+  }
+}
